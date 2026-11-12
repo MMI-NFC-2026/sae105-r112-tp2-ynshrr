@@ -1,1 +1,47 @@
-/* code css à faire */
+/* Ce code sert à mettre en forme le menu de navigation en lui donnant la taille de tout l’écran et en retirant sa bordure.*/
+.menu {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+/* Ce code sert à retirer le scroll de la page lorsque le menu est ouvert. */
+html:has(.menu:popover-open) {
+  overflow: hidden;
+}
+/* Ce code permet de changer l'apparence du curseur, lorsque l'on clique sur le menu, une main apparaît*/
+.burger {
+  cursor: pointer;
+}
+/* Ce code sert à faire apparaître et disparaître le menu avec un effet de fondu.*/
+.menu {
+  transition: 400ms allow-discrete;
+  opacity: 0;
+}
+/* ce code permet de chan,ger l'opacité du menu lorsqu'il est ouvert.*/
+.menu:popover-open {
+  opacity: 1;
+}
+/* Faire en sorte que le menu sois transparent en mettant l'opacité à 0 lorsqu'il est ouvert. */
+@starting-style {
+  .menu:popover-open {
+    opacity: 0;
+  }
+}
+/* permet de déclancher la rotation a l'ouverture du menu burger*/
+@starting-style {
+  .menu:popover-open .burger--close {
+    transform: none;
+  }
+}
+/* Ce code sert à faire tourner le bouton du menu à 90 degrés lorsqu'il est ouvert */
+.menu:popover-open .burger--close {
+  transform: rotate(90deg);
+  transition: 400ms;
+}
+/* Ce code permet de retirer les transitions grâce à l'inspecteur grâce à ctrl + shift + p. */
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .menu .burger--close {
+    transition: none;
+  }
+}
